@@ -30,7 +30,7 @@ contract totalEclipseNFT is ERC721, Ownable, ERC2981 {
 // This function is used to set the metadata for the NFTs
     function _baseURI() internal pure override returns (string memory) {
         return
-            "https://ipfs.filebase.io/ipfs/QmZLchfKvtT19wKVSihESuNMwVwM1ShkmvjEEVXmFQFTYq/"; //Have to change for every albums
+            "https://ipfs.filebase.io/ipfs/QmQ8E99576XFSkuto3B78y4kLQFXXVjxCBYwdi8kfoMd8U/"; //Have to change for every albums
     }
 
     // Mint function to create multiple NFTs at once in an album

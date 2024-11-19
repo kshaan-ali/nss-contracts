@@ -30,7 +30,7 @@ contract DigitalRevolution is ERC721, Ownable, ERC2981 {
 // This function is used to set the metadata for the NFTs
     function _baseURI() internal pure override returns (string memory) {
         return
-            "https://ipfs.filebase.io/QmZKN7W8tdEyzaq1M16PoHVHX6YiKnk8fdCYCRjJ8ikPiQ/"; //Have to change for every albums
+            "https://ipfs.filebase.io/QmS9KfF3gccHxjDDJVa3fATDdjEEJMN3FrPgixwoeKkJQt/"; //Have to change for every albums
     }
 
     // Mint function to create multiple NFTs at once in an album

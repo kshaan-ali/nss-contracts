@@ -30,7 +30,7 @@ contract Legendary is ERC721, Ownable, ERC2981 {
 // This function is used to set the metadata for the NFTs
     function _baseURI() internal pure override returns (string memory) {
         return
-            "https://ipfs.filebase.io/ipfs/QmQikSR5vfdP2Qp3DaScRfPCoAqqDTtVPRbYifCoVKq2CE/"; //Have to change for every albums
+            "https://ipfs.filebase.io/ipfs/QmRPEu8ZDCyF5BCWRQs3NFDSM9k7JGR9HyR93BzsTigzh8/"; //Have to change for every albums
     }
 
     // Mint function to create multiple NFTs at once in an album

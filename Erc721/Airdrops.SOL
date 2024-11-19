@@ -30,7 +30,7 @@ contract Airdrops is ERC721, Ownable, ERC2981 {
 // This function is used to set the metadata for the NFTs
     function _baseURI() internal pure override returns (string memory) {
         return
-            "https://ipfs.filebase.io/ipfs/QmY8dwcddKZdXi19Sfm9LrPJwimAdrQ7DSUsk69aya2Fzu/"; //Have to change for every albums
+            "https://ipfs.filebase.io/ipfs/QmXnzscVPvjVC9xaZgeemMc4uNeSpxQwXnuuvByy1ys2Hn/"; //Have to change for every albums
     }
 
     // Mint function to create multiple NFTs at once in an album

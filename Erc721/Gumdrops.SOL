@@ -30,7 +30,7 @@ contract Gumdrops is ERC721, Ownable, ERC2981 {
 // This function is used to set the metadata for the NFTs
     function _baseURI() internal pure override returns (string memory) {
         return
-            "https://ipfs.filebase.io/ipfs/QmZTT8fgfb78guUeqTdjV4u8cvDkCC9duNJrj9RH6HM4oS/"; //Have to change for every albums
+            "https://ipfs.filebase.io/ipfs/QmeEc8fJ8D3GiydajwMofmLd3J4w5AF87r7TbWWCR2uEEW/"; //Have to change for every albums
     }
 
     // Mint function to create multiple NFTs at once in an album
