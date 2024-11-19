@@ -3,37 +3,50 @@ pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/common/ERC2981.sol";
 
-contract Legendary is ERC721, Ownable, ERC2981 {
+/*
+ * @dev ERC721 contract representing a music album collection. This contract allows minting a set of NFTs at once,
+ * setting up royalties, and granting approval for a vault to manage the NFTs (e.g., for fractionalization).
+*/
+contract Legendary is ERC721, Ownable {
     uint256 private _nextTokenId = 1; // Start tokenId indexing at 1
 
     /**
-     
-@param _royaltyFeesInBips The royalty fee percentage in basis points (1% = 100 bips).
-@param _royaltyReceiverAddress The address that will receive royalty payments.
-@param _approvalToVaultAddress The address approved to operate all NFTs (e.g., for fractionalization).*/
-
+     * @notice Constructor for the Total Eclipse NFT contract.
+     * @param _royaltyReceiverAddress Address that will receive all royalty payments.
+     * @param _approvalToVaultAddress Address approved to operate all NFTs (e.g., for fractionalization purposes).
+     */
     constructor(
-        uint96 _royaltyFeesInBips,
         address _royaltyReceiverAddress,
         address _approvalToVaultAddress
-    ) ERC721("Legendary", "LGY") Ownable(msg.sender) {
-        setRoyaltyInfo(_royaltyReceiverAddress, _royaltyFeesInBips); // Royalty informations
-        collectiveMinting(_royaltyReceiverAddress, 18); // Minting the collection at once
+    ) ERC721("Legendary Album", "LEG") Ownable(msg.sender) {
+
+        // Mint the entire collection to the royalty receiver's address.
+        collectiveMinting(_royaltyReceiverAddress, 17);
+
+        // Approve the vault address to manage the collection on behalf of the owner.
         _setApprovalForAll(
             _royaltyReceiverAddress,
             _approvalToVaultAddress,
             true
-        ); // Approval function call to operate the collection for fractionalization
-    }
-// This function is used to set the metadata for the NFTs
-    function _baseURI() internal pure override returns (string memory) {
-        return
-            "https://ipfs.filebase.io/ipfs/QmRPEu8ZDCyF5BCWRQs3NFDSM9k7JGR9HyR93BzsTigzh8/"; //Have to change for every albums
+        );
     }
 
-    // Mint function to create multiple NFTs at once in an album
+    /**
+     * @dev Overrides the baseURI for the NFT metadata. Each album can have a unique baseURI.
+     * @return The base URI for metadata storage.
+     */
+    function _baseURI() internal pure override returns (string memory) {
+        return
+            "https://inherent-scarlet-tarsier.myfilebase.com/ipfs/QmRPEu8ZDCyF5BCWRQs3NFDSM9k7JGR9HyR93BzsTigzh8/"; //Have to change for every albums
+    }
+
+    /**
+     * @notice Mints multiple NFTs to a specified address.
+     * @param _to Address that will receive the minted NFTs.
+     * @param _mintAmount Number of NFTs to mint.
+     * @dev This function is called only during contract deployment by the owner.
+     */
     function collectiveMinting(address _to, uint256 _mintAmount)
         private
         onlyOwner
@@ -49,18 +62,15 @@ contract Legendary is ERC721, Ownable, ERC2981 {
         return _nextTokenId - 1; // Because the first token is indexed at 1
     }
 
-    // Set Royalty for all the NFTs of this contract
-    function setRoyaltyInfo(address _receiver, uint96 _royaltyFeesInBips)
-        public
-        onlyOwner
-    {
-        _setDefaultRoyalty(_receiver, _royaltyFeesInBips);
-    }
-
+    /**
+     * @dev Ensures compatibility with ERC721 interface and potential extensions.
+     * @param interfaceId The interface identifier being checked.
+     * @return True if the interface is supported, false otherwise.
+     */
     function supportsInterface(bytes4 interfaceId)
         public
         view
-        override(ERC721, ERC2981)
+        override(ERC721)
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
