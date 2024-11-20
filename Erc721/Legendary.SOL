@@ -22,7 +22,7 @@ contract Legendary is ERC721, Ownable {
     ) ERC721("Legendary Album", "LEG") Ownable(msg.sender) {
 
         // Mint the entire collection to the royalty receiver's address.
-        collectiveMinting(_royaltyReceiverAddress, 17);
+        collectiveMinting(_royaltyReceiverAddress, 18);
 
         // Approve the vault address to manage the collection on behalf of the owner.
         _setApprovalForAll(
