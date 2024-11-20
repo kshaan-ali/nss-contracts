@@ -38,7 +38,7 @@ contract Legendary is ERC721, Ownable {
      */
     function _baseURI() internal pure override returns (string memory) {
         return
-            "https://inherent-scarlet-tarsier.myfilebase.com/ipfs/QmRPEu8ZDCyF5BCWRQs3NFDSM9k7JGR9HyR93BzsTigzh8/"; //Have to change for every albums
+            "https://inherent-scarlet-tarsier.myfilebase.com/ipfs/QmfJhUb6EU9WjTEmuJDhGf41S3PsjGAhxmoeyHGJL2B8XS/"; //Have to change for every albums
     }
 
     /**
